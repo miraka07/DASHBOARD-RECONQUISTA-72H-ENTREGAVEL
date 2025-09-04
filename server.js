@@ -1,8 +1,8 @@
-// server.js - Proxy Seguro para Ayla
-import express from "express";
-import fetch from "node-fetch";
-import cors from "cors";
-import dotenv from "dotenv";
+// server.js - Proxy Seguro para Ayla na Vercel (CommonJS style)
+const express = require("express");
+const fetch = require("node-fetch");
+const cors = require("cors");
+const dotenv = require("dotenv");
 
 dotenv.config();
 const app = express();
@@ -37,4 +37,5 @@ app.post("/ayla", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("🚀 Proxy da Ayla rodando na porta 3000"));
+// exporta para que a Vercel saiba lidar com o Express
+module.exports = app;
