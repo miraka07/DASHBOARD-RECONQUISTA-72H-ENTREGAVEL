@@ -1,17 +1,18 @@
-// server.js - Proxy Seguro para Ayla na Vercel (CommonJS style)
-const express = require("express");
+// api/ayla.js
 const fetch = require("node-fetch");
 const cors = require("cors");
+const express = require("express");
 const dotenv = require("dotenv");
 
 dotenv.config();
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const API_KEY = process.env.OPENAI_API_KEY;
 
-app.post("/ayla", async (req, res) => {
+app.post("/", async (req, res) => {
   try {
     const { messages } = req.body;
 
@@ -37,5 +38,4 @@ app.post("/ayla", async (req, res) => {
   }
 });
 
-// exporta para que a Vercel saiba lidar com o Express
 module.exports = app;
